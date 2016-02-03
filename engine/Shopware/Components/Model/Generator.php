@@ -262,6 +262,7 @@ class %className% extends ModelEntity
         }
 
         $this->createTargetDirectory();
+
         if (!file_exists($this->getPath())) {
             return array('success' => false, 'error' => self::CREATE_TARGET_DIRECTORY_FAILED);
         }
@@ -278,6 +279,8 @@ class %className% extends ModelEntity
 
             $table = $this->getSchemaManager()->listTableDetails($tableName);
             $sourceCode = $this->generateModel($table);
+
+
             $result = $this->createModelFile($table, $sourceCode);
             if ($result === false) {
                 $errors[] = $table->getName();
