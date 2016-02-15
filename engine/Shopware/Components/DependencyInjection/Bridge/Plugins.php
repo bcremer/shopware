@@ -51,18 +51,27 @@ class Plugins
         $pluginManager = new \Enlight_Plugin_PluginManager($application);
         $container->load('Table');
 
+
         if (!isset($config['namespaces'])) {
             $config['namespaces'] = array('Core', 'Frontend', 'Backend');
         }
 
         foreach ($config['namespaces'] as $namespace) {
             $namespace = new \Shopware_Components_Plugin_Namespace($namespace);
+
             $pluginManager->registerNamespace($namespace);
+
             $eventManager->registerSubscriber($namespace->Subscriber());
         }
 
-        foreach (array('Local', 'Community', 'Default', 'Commercial') as $dir) {
-            $loader->registerNamespace('Shopware_Plugins', Shopware()->AppPath('Plugins_' . $dir));
+
+        $pluginNamespaces = Shopware()->Container()->getParameter('shopware.pluginNamespaces');
+
+        foreach ($pluginNamespaces as $source => $path) {
+            $loader->registerNamespace(
+                'Shopware_Plugins',
+                $path
+            );
         }
 
         return $pluginManager;

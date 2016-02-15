@@ -97,7 +97,11 @@ class DownloadService
         if (!$source) {
             $source = 'Community';
         }
-        $destination = $this->rootDir . '/engine/Shopware/Plugins/' . $source;
+
+        $pluginNamespaces = Shopware()->Container()->getParameter('shopware.pluginNamespaces');
+        $destination = $pluginNamespaces[$source];
+
+//        $destination = $this->rootDir . '/engine/Shopware/Plugins/' . $source;
 
         $extractor = new PluginExtractor();
         $extractor->extract($file, $destination);
@@ -182,7 +186,7 @@ class DownloadService
     {
         $name = 'plugin_' . md5(uniqid()) . '.zip';
 
-        $file = $this->rootDir . '/files/downloads/' . $name;
+        $file = PROJECTDIR . '/files/downloads/' . $name;
 
         file_put_contents($file, $content);
 

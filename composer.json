@@ -71,6 +71,10 @@
         ],
         "files": ["engine/Shopware/Application.php"]
     },
+    "include-path": [
+        "./",
+        "engine/Library/"
+    ],
     "autoload-dev": {
         "psr-0": {
             "Shopware": "tests/"
@@ -85,5 +89,9 @@
         "platform": {
             "php": "5.5.9"
         }
+    },
+
+    "scripts": {
+        "test": "phpunit -c tests/Shopware"
     }
 }

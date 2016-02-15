@@ -363,8 +363,11 @@ class InstallerService
             if (!$collection instanceof \Shopware_Components_Plugin_Namespace) {
                 continue;
             }
-            foreach (['Local', 'Community', 'Commercial', 'Default'] as $source) {
-                $path = Shopware()->AppPath('Plugins_' . $source . '_' . $namespace);
+
+            $pluginNamespaces = Shopware()->Container()->getParameter('shopware.pluginNamespaces');
+
+            foreach ($pluginNamespaces as $source => $path) {
+                $path = $path . $namespace;
                 if (!is_dir($path)) {
                     continue;
                 }
