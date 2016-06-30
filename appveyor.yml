@@ -2,6 +2,8 @@ build: false
 shallow_clone: true
 platform: x86
 clone_folder: c:\projects\shopware
+clone_depth: 1
+
 
 cache:
   - '%LOCALAPPDATA%\Composer\files'
@@ -47,5 +49,4 @@ install:
 
 test_script:
   - cd C:\projects\shopware
-  - ant -f build/build.xml -Dscript.phpunit="C:\projects\shopware\vendor\bin\phpunit.bat" -Ddb.user=root -Ddb.host=127.0.0.1 -Ddb.name=shopware -Ddb.password="Password12!" build-unit
-  - vendor\bin\phpunit.bat -c tests/Shopware --verbose
+  - ant -f build/build.xml -Dscript.phpunit="C:\projects\shopware\vendor\bin\phpunit.bat" -Ddb.user=root -Ddb.host=127.0.0.1 -Ddb.name=shopware -Ddb.password="Password12!" build-continuous static-lint

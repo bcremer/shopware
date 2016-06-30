@@ -112,6 +112,7 @@
             <arg value="--username=demo"/>
             <arg value="--password=demo"/>
             <arg value="--locale=de_DE"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
@@ -121,12 +122,14 @@
             <arg value="--steps=drop,create,import,setupShop"/>
             <arg value="--host=${app.host}"/>
             <arg value="--path=${app.path}"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
     <target name="build-database-apply-deltas">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:migrations:migrate --mode=install"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
@@ -136,30 +139,35 @@
             <arg value="--steps=importDemodata,setupShop"/>
             <arg value="--host=${app.host}"/>
             <arg value="--path=${app.path}"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
     <target name="build-generate-attributes">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:generate:attributes"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
     <target name="build-snippets-deploy">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:snippets:to:db --include-plugins"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
     <target name="build-theme-initialize">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:theme:initialize"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
     <target name="build-disable-firstrunwizard">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:firstrunwizard:disable"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
@@ -179,6 +187,7 @@
     <target name="build-cache-dir">
         <exec executable="${script.php}" dir="${basedir}/bin" failonerror="true">
             <arg line="console sw:cache:clear"/>
+            <arg value="--no-interaction"/>
         </exec>
     </target>
 
