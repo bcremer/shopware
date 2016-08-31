@@ -6,7 +6,7 @@
 - **License**: Dual license AGPL v3 / Proprietary
 - **Github Repository**: <https://github.com/shopware/shopware>
 - **Issue Tracker**: <https://issues.shopware.com>
-
+foo
 ## Overview
 
 ![Shopware 5 collage](http://cdn.shopware.de/github/readme_screenshot.png)
