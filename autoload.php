@@ -30,6 +30,11 @@ use Composer\Autoload\ClassLoader;
  */
 $loader = require __DIR__ . '/vendor/autoload.php';
 
-AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+AnnotationRegistry::registerLoader([$loader, 'loadClass']);
+
+define('PUBLICDIR', __DIR__.'/web/');
+define('PUBLICPATH', '/web');
+define('PROJECTDIR', __DIR__);
+define('FRONTENDTHEMEDIR', PROJECTDIR . '/custom/themes');
 
 return $loader;
