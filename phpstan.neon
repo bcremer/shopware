@@ -1,0 +1,30 @@
+includes:
+    #- ../vendor/phpstan/phpstan-doctrine/extension.neon
+    #- ../vendor/phpstan/phpstan-phpunit/extension.neon
+    #- ../vendor/phpstan/phpstan-phpunit/rules.neon
+parameters:
+	level: 0
+	paths:
+		- %currentWorkingDirectory%/engine/Shopware
+		- %currentWorkingDirectory%/tests/
+	excludes_analyse:
+		- %currentWorkingDirectory%/engine/Shopware/Configs/Default.php
+
+	ignoreErrors:
+		- '#ftp_#'
+		- '#gd_#'
+		- '#apcu_#'
+		- '#opcache_#'
+		- '#Function image#'
+		- '#ioncube_#'
+		- '#Function easter_days not found#'
+		- '#class Redis#'
+
+
+		- '#Return typehint of method Shopware\\Models\\[a-zA-Z0-9\\_]+::getAttribute\(\) has invalid type Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+#'
+		- '#Return typehint of method Shopware\\Models\\[a-zA-Z0-9\\_]+::setAttribute\(\) has invalid type Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+#'
+		- '#Parameter \$attribute of method Shopware\\Models\\[a-zA-Z0-9\\_]+::setAttribute\(\) has invalid typehint type Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+#'
+		- '#Property Shopware\\Models\\[a-zA-Z0-9\\_]+::\$attribute has unknown class Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+ as its type#'
+		- '#Class Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+ not found#'
+		- '#nstantiated class Shopware\\Models\\Attribute\\[a-zA-Z0-9\\_]+ not found#'
+
